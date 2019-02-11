@@ -10,6 +10,7 @@ server {
                 add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS';
 
                 proxy_cache one;
+                proxy_cache_valid 200 20s;
                 proxy_pass http://{HOSTNAME}:8000;
         }
 }
