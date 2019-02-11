@@ -6,12 +6,3 @@ variable "server_name" {
 variable "server_hostname" {
   description = "The FQDN or IP address of the web server to cache content for"
 }
-
-variable "vpc_id" {
-  description = "VPC to create the nginx server in"
-}
-
-variable "provider" {
-  description = "Region/provider to use for creating resources"
-  default = "aws"
-}

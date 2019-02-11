@@ -3,8 +3,13 @@ terraform {
   required_version = ">= 0.9.3"
 }
 
+provider "aws" {
+    access_key = "${var.aws_access_key}"
+    secret_key = "${var.aws_secret_key}"
+    region = "us-east-1"
+}
+
 resource "aws_instance" "nginx_instance" {
-    provider = "${var.provider}"
     ami = "${data.aws_ami.ubuntu.id}"
     instance_type = "t2.micro"
     vpc_security_group_ids = ["${aws_security_group.nginx-sg.id}"]
@@ -17,7 +22,6 @@ resource "aws_instance" "nginx_instance" {
 }
 
 resource "aws_security_group" "nginx-sg" {
-    provider = "${var.provider}"
     name = "nginx-sg"
     description = "nginx security group"
     vpc_id = "${data.aws_vpc.currentvpc.id}"

@@ -1,10 +1,8 @@
 data "aws_vpc" "currentvpc" {
-  provider = "${var.provider}"
-  default = true
+    default = true
 }
 
 data "aws_ami" "ubuntu" {
-    provider = "${var.provider}"
     most_recent = true
 
     filter {
